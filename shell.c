@@ -5,29 +5,39 @@
  */
 int main(void)
 {
-	char *prompt = "$", *lineptr;
-	char **argv;
-	int n = 0, status;
+	char *prompt = "$ ", *lineptr = NULL;
+	char **argv, *path;
+	size_t n = 0;
+	int status;
 
 	while (1)
 	{
-		printf("\n%s", prompt);
+		printf("%s", prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
-			perror("getline");
+			free(lineptr);
 			exit(99);
 		}
 		if (_strncmp(lineptr, "exit", 4) == 0)
+		{
+			free(lineptr);
 			exit(99);
+		}
 		else if (_strncmp(lineptr, "env", 3) == 0)
 			_getenv();
 		else
 		{
 			argv = parse(lineptr);
-			*argv = _which(*argv);
-			status = _execte(argv);
+			path = _which(argv[0]);
+			if (path != NULL)
+			{
+				status = _execte(path, argv);
+				free(path);
+			}
+			else
+				printf("Command '%s' not found\n", argv[0]);
+			free_arr(argv);
 		}
-		free(argv);
 	}
 	return (0);
 }
