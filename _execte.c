@@ -5,6 +5,8 @@
   *
   * @argv: array of strings
   *
+  * @path: string
+  *
   * Return: 0 if success -1 if fail
   */
 
