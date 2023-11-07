@@ -14,9 +14,14 @@ char **parse(char *lineptr)
 	size_t len = 0;
 	int i = 0;
 
-	copy_lineptr = strdup(lineptr);
+	copy_lineptr = _strdup(lineptr);
 	/* count number of argumens */
 	tok = strtok(lineptr, delm);
+	if (tok == NULL)
+	{
+		free(copy_lineptr);
+		return (NULL);
+	}
 	while (tok != NULL)
 	{
 		len++;
@@ -34,7 +39,7 @@ char **parse(char *lineptr)
 	tok = strtok(copy_lineptr, delm);
 	while (tok != NULL)
 	{
-		argv[i] = strdup(tok);
+		argv[i] = _strdup(tok);
 		tok = strtok(NULL, delm);
 		i++;
 	}

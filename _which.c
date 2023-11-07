@@ -7,7 +7,6 @@
   *
   * Return: path of the exectable file in success NULL if fail
   */
-
 char *_which(char *command)
 {
 	char *path, *copy_path, *tok = NULL, *command_path = NULL;
@@ -18,26 +17,26 @@ char *_which(char *command)
 	/* if the command is a path */
 	if (stat(command, &st) == 0)
 	{
-		command_path = strdup(command);
+		command_path = _strdup(command);
 		return (command_path);
 	}
-	command_len = strlen(command);
+	command_len = _strlen(command);
 	path = getenv("PATH");
-	copy_path = malloc(strlen(path) + 1);
-	strcpy(copy_path, path);
+	copy_path = malloc(_strlen(path) + 1);
+	_strcpy(copy_path, path);
 	tok = strtok(copy_path, delm);
 	while (tok != NULL)
 	{
 		/*check if the command is in the path*/
-		command_path = malloc(sizeof(char) * (strlen(tok) + command_len + 2));
+		command_path = malloc(sizeof(char) * (_strlen(tok) + command_len + 2));
 		if (!command_path)
 		{
 			return (NULL);
 		}
-		strcpy(command_path, tok);
-		strcat(command_path, "/");
-		strcat(command_path, command);
-		strcat(command_path, "\0");
+		_strcpy(command_path, tok);
+		_strcat(command_path, "/");
+		_strcat(command_path, command);
+		_strcat(command_path, "\0");
 		if (stat(command_path, &st) == 0)
 		{
 			free(copy_path);
