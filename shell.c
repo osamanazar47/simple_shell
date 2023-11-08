@@ -5,12 +5,12 @@
  */
 int main(void)
 {
-	char *prompt = "$ ", *lineptr = NULL, **argv, *path;
+	char *prompt = "$ ", *lineptr = NULL;
 	size_t n = 0;
 
 	while (1)
 	{
-		_puts("%s", prompt);
+		_puts(prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
 			_puts("\n");
@@ -30,7 +30,6 @@ int main(void)
 			{
 				exeme(lineptr);
 			}
-		
 		}
 	}
 	return (0);

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _getenv - prints the enviroment variables
+ * print_env - prints the enviroment variables
  * Return: 0
  */
 void print_env(void)
@@ -12,5 +12,4 @@ void print_env(void)
 		printf("%s\n", *env);
 		env++;
 	}
-	return;
 }
