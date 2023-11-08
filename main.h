@@ -24,28 +24,34 @@ void print_env(void);
 /* parse whatever the user entire */
 char **parse(char *lineptr);
 /* find the exectable file path */
-char *_which(char *command);
+char *_which(char *path);
 /* execte the exectable file */
 int _execte(char *path, char **argv);
-/* call _which and _execte */
-int exeme(char *lineptr);
 /* free dynamic allocated space */
 void free_arr(char **str);
-/* compare two string */
-int _strncmp(char *first, char *second, int n);
-/* _putchar */
+/* putchar */
 int _putchar(char c);
-/* write string of character */
+/* put characters */
 int _puts(char *str);
-/* count the length of string */
+/* _error msg */
+int _error(char *str);
+/*exe command */
+int exeme(char *lineptr);
+/* str length */
 size_t _strlen(char *str);
-/* concatenate */
-char *_strcat(char *dest, char *src);
-/* memory allocatation */
-char *_memcpy(char *dest, const char *src, unsigned int n);
-/* duplicate the string */
-char *_strdup(char *s);
-/* copy strings */
+/* copy string */
 char *_strcpy(char *dest, char *src);
+/* concatenate strings */
+char *_strcat(char *dest, char *src);
+/* memory copy */
+char *_memcpy(char *dest, const char *src, unsigned int n);
+/* string dup */
+char *_strdup(char *s);
+/*compare tow string */
+int _strncmp(char *first, char *second, int n);
+/* putchar to stderr */
+int _putchar_err(char c);
+/* put characters to stderr */
+int _putserr(char *str);
 
 #endif

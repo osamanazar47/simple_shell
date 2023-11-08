@@ -7,30 +7,37 @@ int main(void)
 {
 	char *prompt = "$ ", *lineptr = NULL;
 	size_t n = 0;
+	int status;
 
 	while (1)
 	{
-		_puts(prompt);
+		if (isatty(STDIN_FILENO))
+			_puts(prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
-			/*_puts("\n");*/
+			if (isatty(STDIN_FILENO))
+				_puts("\n");
 			free(lineptr);
-			return (0);
+			return (EXIT_SUCCESS);
 		}
 		if (_strncmp(lineptr, "\n", 1) != 0)
 		{
 			if (_strncmp(lineptr, "exit", 4) == 0)
 			{
 				free(lineptr);
-				return (0);
+				return (EXIT_SUCCESS);
 			}
 			else if (_strncmp(lineptr, "env", 3) == 0)
 				print_env();
 			else
 			{
-				exeme(lineptr);
+				status = exeme(lineptr);
+				if (status != EXIT_SUCCESS)
+				{
+					exit(status);
+				}
 			}
 		}
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
