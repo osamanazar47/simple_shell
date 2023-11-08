@@ -10,6 +10,7 @@ void print_env(void)
 	while (*env != NULL)
 	{
 		_puts(*env);
+		_putchar('\n');
 		env++;
 	}
 }
