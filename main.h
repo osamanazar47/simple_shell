@@ -27,6 +27,8 @@ char **parse(char *lineptr);
 char *_which(char *command);
 /* execte the exectable file */
 int _execte(char *path, char **argv);
+/* call _which and _execte */
+int exeme(char *lineptr);
 /* free dynamic allocated space */
 void free_arr(char **str);
 /* compare two string */

@@ -13,7 +13,7 @@ int main(void)
 		_puts(prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
-			_puts("\n");
+			/*_puts("\n");*/
 			free(lineptr);
 			return (0);
 		}
