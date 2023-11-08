@@ -7,10 +7,11 @@ int main(void)
 {
 	char *prompt = "$", *lineptr;
 	char **argv;
-	int n = 0, status;
+	int *n = 0, status;
 
 	while (1)
 	{
+		(void)status;
 		printf("\n%s", prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
