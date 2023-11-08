@@ -26,12 +26,16 @@ int _execte(char *path, char **argv)
 		if (execve(path, argv, NULL) == -1)
 		{
 			perror("Error: ");
-			return (-1);
+			exit(errno);
 		}
 	}
 	else
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+		{
+			return (WEXITSTATUS(status));
+		}
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

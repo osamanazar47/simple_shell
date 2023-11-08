@@ -7,6 +7,7 @@
 int exeme(char *lineptr)
 {
 	char **argv, *path;
+	int status = EXIT_SUCCESS;
 
 	argv = parse(lineptr);
 	if (argv != NULL)
@@ -14,16 +15,17 @@ int exeme(char *lineptr)
 		path = _which(argv[0]);
 		if (path != NULL)
 		{
-			_execte(path, argv);
+			status = _execte(path, argv);
 			free(path);
 		}
 		else
 		{
-			_puts("./hsh: 1: ");
-			_puts(argv[0]);
-			_puts(": not found\n");
+			_putserr("./hsh: 1: ");
+			_putserr(argv[0]);
+			_putserr(": not found\n");
+			status = 127;
 		}
-		free(argv);
+		free_arr(argv);
 	}
-	return (0);
+	return (status);
 }
