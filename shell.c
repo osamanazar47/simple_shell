@@ -5,30 +5,33 @@
  */
 int main(void)
 {
-	char *prompt = "$", *lineptr;
-	char **argv;
-	int *n = 0, status;
+	char *prompt = "$ ", *lineptr = NULL, **argv, *path;
+	size_t n = 0;
 
 	while (1)
 	{
-		(void)status;
-		printf("\n%s", prompt);
+		_puts("%s", prompt);
 		if (getline(&lineptr, &n, stdin) == -1)
 		{
-			perror("getline");
-			exit(99);
+			_puts("\n");
+			free(lineptr);
+			return (0);
 		}
-		if (_strncmp(lineptr, "exit", 4) == 0)
-			exit(99);
-		else if (_strncmp(lineptr, "env", 3) == 0)
-			_getenv();
-		else
+		if (_strncmp(lineptr, "\n", 1) != 0)
 		{
-			argv = parse(lineptr);
-			*argv = _which(*argv);
-			status = _execte(argv);
+			if (_strncmp(lineptr, "exit", 4) == 0)
+			{
+				free(lineptr);
+				return (0);
+			}
+			else if (_strncmp(lineptr, "env", 3) == 0)
+				print_env();
+			else
+			{
+				exeme(lineptr);
+			}
+		
 		}
-		free(argv);
 	}
 	return (0);
 }
