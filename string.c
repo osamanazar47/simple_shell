@@ -80,7 +80,6 @@ char *_memcpy(char *dest, const char *src, unsigned int n)
 		dest[j] = src[j];
 	}
 
-	
 	return (dest);
 }
 /**

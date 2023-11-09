@@ -6,7 +6,7 @@
 void print_env(void)
 {
 	char **env = environ, *key;
-	size_t count = 0, j, i , n;
+	size_t count = 0, j, i, n;
 
 	while (env[count] != NULL)
 		count++;
