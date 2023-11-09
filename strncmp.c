@@ -17,3 +17,20 @@ int _strncmp(char *first, char *second, int n)
 	}
 	return (0);
 }
+/**
+ * _strcmp - compares two strings
+ * @str1: the first string
+ * @str2: the second string
+ * Return: 0 on success
+ */
+int _strcmp(const char *str1, const char *str2)
+{
+	while (*str1 != '\0' && *str2 != '\0')
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
+}

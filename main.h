@@ -49,6 +49,7 @@ char *_memcpy(char *dest, const char *src, unsigned int n);
 char *_strdup(char *s);
 /*compare tow string */
 int _strncmp(char *first, char *second, int n);
+int _strcmp(const char *str1, const char *str2);
 /* putchar to stderr */
 int _putchar_err(char c);
 /* put characters to stderr */
