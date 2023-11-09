@@ -53,5 +53,7 @@ int _strncmp(char *first, char *second, int n);
 int _putchar_err(char c);
 /* put characters to stderr */
 int _putserr(char *str);
+/* check if the command is a path or start with ./ */
+int if_path(char *command);
 
 #endif

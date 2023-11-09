@@ -14,8 +14,8 @@ char *_which(char *command)
 	const char *delm = " : ";
 	size_t command_len = 0;
 
-	/* if the command is a path */
-	if (stat(command, &st) == 0)
+	/* if the command is a path or start with ./ */
+	if (if_path(command))
 	{
 		command_path = _strdup(command);
 		return (command_path);

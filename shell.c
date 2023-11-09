@@ -7,7 +7,7 @@ int main(void)
 {
 	char *prompt = "$ ", *lineptr = NULL;
 	size_t n = 0;
-	int status;
+	int status = 0;
 
 	while (1)
 	{
@@ -34,6 +34,7 @@ int main(void)
 				status = exeme(lineptr);
 				if (status != EXIT_SUCCESS)
 				{
+					free(lineptr);
 					exit(status);
 				}
 			}
