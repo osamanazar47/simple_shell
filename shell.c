@@ -13,7 +13,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			_puts(prompt);
-		if (getline(&lineptr, &n, stdin) == -1)
+		if (_getline(&lineptr, &n, stdin) == -1)
 		{
 			if (isatty(STDIN_FILENO))
 				_puts("\n");
