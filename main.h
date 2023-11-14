@@ -63,5 +63,6 @@ int _putchar_err(char c);
 int _putserr(char *str);
 /* check if the command is a path or start with ./ */
 int if_path(char *command);
-
+/* reallocates memory for the pointer */
+void *_realloc(void *ptr, size_t size);
 #endif

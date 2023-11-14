@@ -58,7 +58,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	if (buf == NULL || *n < MIN_BUFFER)
 	{
 		/* if buf is NULL or *n is small --> allocate new space */
-		buf = realloc(*lineptr, BUFFER_SIZE);
+		buf = _realloc(*lineptr, BUFFER_SIZE);
 		if (buf == NULL)
 		{
 			errno = ENOMEM; /* fail to allocate space */
