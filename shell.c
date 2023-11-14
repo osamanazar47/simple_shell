@@ -7,13 +7,13 @@ int main(void)
 {
 	char *prompt = "$ ", *lineptr = NULL;
 	size_t n = 0;
-	int status;
+	int status = 0;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 			_puts(prompt);
-		if (getline(&lineptr, &n, stdin) == -1)
+		if (_getline(&lineptr, &n, stdin) == -1)
 		{
 			if (isatty(STDIN_FILENO))
 				_puts("\n");
@@ -34,6 +34,7 @@ int main(void)
 				status = exeme(lineptr);
 				if (status != EXIT_SUCCESS)
 				{
+					free(lineptr);
 					exit(status);
 				}
 			}

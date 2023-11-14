@@ -16,6 +16,11 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+#include <limits.h>
+
+#define BUFFER_SIZE 128
+#define SSIZE_MAX LONG_MAX
+#define MIN_BUFFER 4
 
 extern char **environ;
 
@@ -33,6 +38,8 @@ void free_arr(char **str);
 int _putchar(char c);
 /* put characters */
 int _puts(char *str);
+/* get char from stream file */
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 /* _error msg */
 int _error(char *str);
 /*exe command */
@@ -54,5 +61,7 @@ int _strcmp(const char *str1, const char *str2);
 int _putchar_err(char c);
 /* put characters to stderr */
 int _putserr(char *str);
+/* check if the command is a path or start with ./ */
+int if_path(char *command);
 
 #endif
