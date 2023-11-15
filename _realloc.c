@@ -3,6 +3,7 @@
  * _realloc - reallocte memry for a pointer
  * @ptr: the pointer
  * @size: the new size of the block of memory
+ * Return: void
  */
 void *_realloc(void *ptr, size_t size)
 {
