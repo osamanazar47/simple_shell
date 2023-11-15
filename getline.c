@@ -81,7 +81,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		/* check if *n is less than readed bytes */
 		if (bytes >= (ssize_t)*n - 1)
 		{
-			buf = realloc(*lineptr, *n + BUFFER_SIZE);
+			buf = _realloc(*lineptr, *n + BUFFER_SIZE);
 			if (buf == NULL)
 			{
 				errno = ENOMEM;
